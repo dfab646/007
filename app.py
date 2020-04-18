@@ -11,12 +11,13 @@ class User(db.Model):
     email = db.Column(db.String)
     password =  db.Column(db.String)
 @app.route('/',methods=['GET','POST'])
-
-if request.method == "GET":
-    users = User.query.all()
-    user User(firstname='',lastname='',email='',password='')
-    pagename = 'home'
-    return render_template('home.html',pagename=pagename,users=users,user=user)
-
+def get():
+    if request.method == "GET":
+        users = User.query.all()
+        user = User(firstname='',lastname='',email='',password='')
+        pagename = 'home'
+        return render_template('home.html',pagename=pagename,users=users,user=user)
+    #else:
+     #   firstname = request.form['firstname']
 if __name__ == '__main__':
     app.run(debug=True)
